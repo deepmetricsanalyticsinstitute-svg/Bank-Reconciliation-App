@@ -2,11 +2,11 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { ReconciliationResult } from '../types';
 
-if (!process.env.API_KEY) {
+if (!process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT') {
   throw new Error("API_KEY environment variable is not set");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
 
 const responseSchema = {
   type: Type.OBJECT,
